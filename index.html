@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/82df1c5d91.js" crossorigin="anonymous"></script>
 </head>
 
@@ -18,90 +18,85 @@
                 <h3 class="card-title font-weight-bold">Payment form example</h3>
             </div>
             <div class="card-body text-left pb-0">
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-danger d-none" id="alert" role="alert">
                     Some fields are missing!
                 </div>
                 <form>
                     <div class="form-row">
                         <div class="form-group col-lg-5 col-sm-12">
-                            <label for="inputEmail4">Card #</label>
-                            <input type="number" class="form-control" id="inputEmail4" placeholder="XXXXXXXXXXXXXXXX">
+                            <label for="cardNumber">Card #</label>
+                            <input type="text" class="form-control" id="CardNumber" name="cardNumber" placeholder="XXXXXXXXXXXXXXXX" pattern="[0-9]{16}">
                         </div>
                         <div class="form-group col-lg-3 col">
-                            <label for="inputPassword4">CVC #</label>
-                            <input type="number" class="form-control" id="inputPassword4" placeholder="000">
+                            <label for="cardCVC">CVC #</label>
+                            <input type="text" class="form-control" id="CardCVC" name="cardCVC" placeholder="000" pattern="[0-9]{3}">
                         </div>
                         <div class="form-group col-lg-4 col">
-                            <label for="inputPassword4">Amount</label>
+                            <label for="cardAmount">Amount</label>
                             <i class="fas fa-dollar-sign"></i>
-                            <input type="number" class="form-control" id="inputPassword4" placeholder="Amount">
+                            <input type="text" class="form-control" id="cardAmount" name="cardAmount" placeholder="Amount" pattern="[0-9]+">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-lg-7 col-sm-12 col-md-6">
-                            <label for="inputAddress">First Name</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="">
+                            <label for="firstName">First Name</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="">
                         </div>
                         <div class="form-group col-lg-5 col-sm-12 col-md-6">
-                            <label for="inputAddress2">Last Name</label>
-                            <input type="text" class="form-control" id="inputAddress2" placeholder="">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-sm-12 col-md-4">
                             <label for="inputCity">City</label>
-                            <input type="text" class="form-control" id="inputCity">
+                            <input type="text" class="form-control" id="inputCity" name="inputCity" autocomplete="on">
                         </div>
                         <div class="form-group col-lg-3 col-sm-4 col-md-4">
                             <label for="inputState">State</label>
-                            <select id="inputState" class="form-control">
-                                <option selected>Pick a state</option>
-                                <option>...</option>
+                            <select id="inputState" class="form-control" name="inputState">
+                                <option value="" selected>Pick a state</option>
+                                <option value="NI">North Island</option>
+                                <option value="SI">South Island</option>
                             </select>
                         </div>
                         <div class="form-group col-lg-3 col-sm-5 col-md-4">
                             <label for="inputZip">Postal Code</label>
-                            <input type="text" class="form-control" id="inputZip">
+                            <input type="text" class="form-control" id="inputZip" name="inputZip">
                         </div>
                     </div>
                     <div class="form-row d-flex justify-content-between">
                         <div class="form-group col-lg-3 col-sm-12 col-md-4">
                             <label for="payment-methods">We accept:</label>
                             <div class="input-group-text bg-dark  d-flex justify-content-around" id="payment-methods">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                    <label class="form-check-label" for="inlineRadio1">
+                                <div class="form-check form-check-inline w-100 d-flex justify-content-around">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="masterCard" value="MasterCard">
+                                    <label class="form-check-label" for="masterCard">
                                         <i class="fab fa-cc-mastercard"></i>
                                     </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                    <label class="form-check-label" for="inlineRadio2">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="cardVisa" value="cardVisa">
+                                    <label class="form-check-label" for="cardVisa">
                                         <i class="fab fa-cc-visa"></i>
                                     </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-                                    <label class="form-check-label" for="inlineRadio3"><i class="fab fa-cc-diners-club"></i></label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
-                                    <label class="form-check-label" for="inlineRadio4"><i class="fab fa-cc-amex"></i></label>
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="dinersClub" value="dinersClub">
+                                    <label class="form-check-label" for="dinarsClub"><i class="fab fa-cc-diners-club"></i></label>
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="americanEx" value="americanEx">
+                                    <label class="form-check-label" for="americanEx"><i class="fab fa-cc-amex"></i></label>
                                 </div>
                             </div>
 
                         </div>
                         <div class="form-group col-lg-6 col-sm-12">
                             <label for="exampleFormControlTextarea1">Message</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control" id="inputTextarea" rows="3"></textarea>
                             <small class="text-muted">Add any notes here.</small>
                         </div>
                     </div>
+                    <div class="card-footer py-2 d-flex justify-content-end">
+                        <button type="reset" class="btn btn-secondary" id="cancel">Cancel</button>
+                        <button type="submit" class="btn btn-primary ml-2">Send</button>
+                    </div>
                 </form>
-            </div>
-            <div class="card-footer py-2 d-flex justify-content-end">
-                <a href="#" class="btn btn-secondary">Cancel</a>
-                <a href="#" class="btn btn-primary ml-2">Send</a>
             </div>
         </div>
     </div>
@@ -111,4 +106,5 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="./js/main.js"></script>
 </body></html>
